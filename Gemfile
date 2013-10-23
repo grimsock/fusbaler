@@ -10,4 +10,5 @@ gem 'omniauth-google-oauth2', '0.2.1'
 group :test do
   gem 'rspec', '2.13.0'
   gem 'rspec-rails', '2.13.2'
+  gem 'factory_girl', '4.2.0'
 end
