@@ -1,0 +1,18 @@
+<h1>New player</h1>
+<%= form_for :player, url: players_path do |f| %>
+  <% if @player.errors.any? %>
+    <ul>
+    <% @player.errors.full_messages.each do |m| %>
+      <li><%= m %></li>
+    <%end %>
+    </ul>
+  <%end %>
+  <p>
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
+<p><%= link_to 'Back to players list', players_path %></p>

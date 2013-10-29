@@ -1,0 +1,15 @@
+<h1>All players</h1>
+<table>
+  <tr>
+    <th>Name</th>
+  </tr>
+ 
+  <% @players.each do |p| %>
+    <tr>
+      <td><%= p.name %></td>
+      <td><%= link_to 'Show', player_path(p) %></td>
+      <td><%= link_to 'Edit', edit_player_path(p) %></td>
+    </tr>
+  <% end %>
+</table>
+<p><%= link_to 'New player', new_player_path %></p>
