@@ -15,6 +15,8 @@ Fusbaler::Application.routes.draw do
   #   resources :products
   resources :players
 
+  resources :teams
+
   # Example resource route with options:
   #   resources :products do
   #     member do

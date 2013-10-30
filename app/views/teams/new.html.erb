@@ -1,0 +1,24 @@
+<h1>New team</h1>
+<%= form_for :team, url: teams_path do |f| %>
+  <% if @team.errors.any? %>
+    <ul>
+    <% @team.errors.full_messages.each do |m| %>
+      <li><%= m %></li>
+    <%end %>
+    </ul>
+  <%end %>
+  <p>
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.collection_select(:player_ids, @players, :id, :name, {}, { multiple: true }) %>
+  </p>
+  <p>
+    <%= link_to 'Add player', new_player_path %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
+<p><%= link_to 'Back to teams list', teams_path %></p>
