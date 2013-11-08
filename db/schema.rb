@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131108153640) do
+ActiveRecord::Schema.define(version: 20131108170429) do
 
   create_table "matches", force: true do |t|
     t.integer  "team_home_id"
@@ -37,7 +37,10 @@ ActiveRecord::Schema.define(version: 20131108153640) do
     t.integer  "ranking_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "team_id"
   end
+
+  add_index "ranking_positions", ["team_id"], name: "index_ranking_positions_on_team_id", using: :btree
 
   create_table "rankings", force: true do |t|
     t.string   "name"
