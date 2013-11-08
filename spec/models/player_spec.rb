@@ -7,7 +7,7 @@ describe Player do
       before { create(:player, name: 'player') }
 
       it 'cannot be empty' do
-        expect(build(:player, name: '')).to_not be_valid
+        expect(build(:player, name: nil)).to_not be_valid
       end
 
       it 'cannot be duplicated' do

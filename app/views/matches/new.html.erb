@@ -13,6 +13,9 @@
     <%= f.collection_select(:team_away_id, @teams, :id, :name) %>
   </p>
   <p>
+    <%= link_to 'Add team', new_team_path %>
+  </p>
+  <p>
   <%= f.fields_for :score_attributes do |f| %>
     <p>
       <%= f.label :score %><br>

@@ -9,7 +9,16 @@
     <p><%= p.name %></p>
   <% end %>
   </p>
-<h2>Add players</h2>
-
+<h2>Matches</h2>
+<p>
+  <% @team.matches.each do |m| %>
+    <p>
+      <%= m.team_home.name %> :
+      <%= m.team_away.name %> |
+      <%= m.score.score_home %> : 
+      <%= m.score.score_away %>
+    </p>
+  <% end %>
+</p>
 <%= link_to 'Edit', edit_team_path(@team) %> |
 <%= link_to 'Back to teams index', teams_path %>

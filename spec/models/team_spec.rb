@@ -7,7 +7,7 @@ describe Team do
       before { create(:team, name: 'team') }
 
       it 'cannot be empty' do
-        expect(build(:team, name: '')).to_not be_valid
+        expect(build(:team, name: nil)).to_not be_valid
       end
 
       it 'cannot be duplicated' do
@@ -20,6 +20,40 @@ describe Team do
 
       it 'creates valid player' do
         expect(build(:team, name: 'Team 1')).to be_valid
+      end
+    end
+
+    context 'team_players_limit' do
+      context 'when more than 2 players' do
+        let(:players) { build_list(:player, 3) }
+
+        it { expect(build(:team, players: players)).to_not be_valid }
+      end
+
+      context 'when 2 players' do
+        let(:players) { build_list(:player, 2) }
+
+        it { expect(build(:team, players: players)).to be_valid }
+      end
+    end
+  end
+
+  describe '#matches' do
+    let(:team) { create(:team) }
+
+    context 'when team has home and away matches' do
+      let(:matches) { [] << create(:match, team_home: team) << create(:match, team_away: team) }
+
+      it 'returns all matches' do
+        expect(team.matches).to eq(matches)
+      end
+    end
+
+    context 'when team has only home match' do
+      let(:matches) { [] << create(:match, team_home: team) }
+
+      it 'returns all matches' do
+        expect(team.matches).to eq(matches)
       end
     end
   end
