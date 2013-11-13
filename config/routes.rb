@@ -19,6 +19,8 @@ Fusbaler::Application.routes.draw do
 
   resources :matches
 
+  resources :ranking
+
   # Example resource route with options:
   #   resources :products do
   #     member do
