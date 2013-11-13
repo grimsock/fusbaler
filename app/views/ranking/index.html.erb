@@ -1,0 +1,14 @@
+<h1>Ranking</h1>
+<table>
+  <tr>
+    <th>Team</th>
+    <th>Rank</th>
+  </tr>
+ 
+  <% @ranking_positions.each do |r| %>
+    <tr>
+      <td><%= r.team.name %></td>
+      <td><%= r.rank %></td>
+    </tr>
+  <% end %>
+</table>
