@@ -4,4 +4,5 @@ class RankingPosition < ActiveRecord::Base
 
   validates :ranking, presence: true
   validates :rank, presence: true
+  validates :team, presence: true
 end
