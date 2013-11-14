@@ -40,6 +40,10 @@ describe Team do
 
   describe '#matches' do
     let(:team) { create(:team) }
+    let(:ranking) { build(:default_ranking) }
+    before do
+      Ranking.stub_chain(:default, :first).and_return(ranking)
+    end
 
     context 'when team has home and away matches' do
       let(:matches) { [] << create(:match, team_home: team) << create(:match, team_away: team) }
