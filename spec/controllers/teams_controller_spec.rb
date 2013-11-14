@@ -2,9 +2,14 @@ require 'spec_helper'
 
 describe TeamsController do
   describe '#new' do
-    before { get :new }
+    let(:players) { build_list(:player, 2) }
+    before do
+      Player.stub(:all).and_return(players)
+      get :new
+    end
 
     it { expect(response).to be_success }
+    it { expect(assigns(:players)).to eq(players) }
   end
 
   describe '#create' do
@@ -21,6 +26,17 @@ describe TeamsController do
 
         expect(response).to redirect_to team_path(t)
       end
+    end
+
+    context 'players' do
+      let(:players) { build_list(:player, 2) }
+      before do
+        Player.stub(:all).and_return(players)
+        expect_any_instance_of(Team).to receive(:save)
+        post :create, team: attributes_for(:team)
+      end
+      
+      it { expect(assigns(:players)).to eq(players) }
     end
 
     context 'when invalid attributes' do
@@ -48,22 +64,34 @@ describe TeamsController do
 
       it { expect(response).to be_not_found }
     end
+
+    context 'players' do
+      let(:players) { build_list(:player, 2) }
+      before do
+        Team.any_instance.stub(:players).and_return(players)
+        Team.stub(:find).and_return(team)
+        get :show, id: team.id
+      end
+      
+      it { expect(assigns(:players)).to eq(players) }
+    end
   end
 
   describe '#index' do
     context 'when teams exist' do
-      let(:team_1) { build(:team) }
-      let(:team_2) { build(:team) }
+      let(:teams) { build_list(:team, 2) }
       before do
-        Team.stub(:all).and_return([team_1, team_2])
+        Team.stub(:all).and_return(teams)
         get :index
       end
 
       it { expect(response).to be_success }
-      it { expect(assigns(:teams)).to eq([team_1, team_2]) }
+      it { expect(assigns(:teams)).to eq(teams) }
     end
 
     context 'when no teams' do
+      before { get :index }
+
       it { expect(response).to be_success }
     end
   end
@@ -72,12 +100,15 @@ describe TeamsController do
     let(:team) { build_stubbed(:team) }
 
     context 'when team exists' do
+      let(:players) { build_list(:player, 2) }
       before do
+        Player.stub(:all).and_return(players)
         Team.stub(:find).and_return(team)
         get :edit, id: team.id
       end
 
       it { expect(response).to be_success }
+      it { expect(assigns(:players)).to eq(players) }
     end
 
     context 'when team does not exist' do
@@ -105,6 +136,18 @@ describe TeamsController do
 
         expect(response).to redirect_to team_path(team)
       end
+    end
+
+    context 'players' do
+      let(:players) { build_list(:player, 2) }
+      before do
+        Player.stub(:all).and_return(players)
+        Team.stub(:find).and_return(team)
+        expect(team).to receive(:update)
+        put :update, id: team.id, team: attributes_for(:team)
+      end
+
+      it { expect(assigns(:players)).to eq(players) }
     end
 
     context 'when invalid attributes' do
