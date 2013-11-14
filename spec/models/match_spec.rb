@@ -52,10 +52,11 @@ describe Match do
       context 'when ranking position exists' do
         let(:team) { build(:team) }
         let(:match) { build(:match, team_home: team, score: score) }
-        let(:ranking_position) { create(:ranking_position, team: team, rank: 3, ranking: default_ranking) }
+        let!(:ranking_position) { create(:ranking_position, team: team, rank: 3, ranking: default_ranking) }
         let(:default_ranking) { create(:default_ranking) }
 
         it { expect { match.set_rank }.to change{ranking_position.reload.rank}.by(1) }
+        it { expect { match.set_rank }.to_not change{RankingPosition.count}.by(1) }
       end
 
       context 'when ranking position does not exist' do
@@ -66,6 +67,7 @@ describe Match do
 
         it { expect(match.set_rank.rank).to be(1) }
         it { expect(match.set_rank.team_id).to be(team.id) }
+        it { expect { match.set_rank }.to change{RankingPosition.count}.by(1) }
       end
     end
 
