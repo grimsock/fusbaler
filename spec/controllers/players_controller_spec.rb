@@ -43,6 +43,17 @@ describe PlayersController do
       it { expect(assigns(:player)).to eq(player) }
     end
 
+    context 'teams' do
+      let(:teams) { build_list(:team, 2) }
+      before do
+        Player.any_instance.stub(:teams).and_return(teams)
+        Player.stub(:find).and_return(player)
+        get :show, id: player.id
+      end
+      
+      it { expect(assigns(:teams)).to eq(teams) }
+    end
+
     context 'when player does not exist' do
       before { get :show, id: player.id }
 
