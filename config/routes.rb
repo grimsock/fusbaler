@@ -10,16 +10,25 @@ Fusbaler::Application.routes.draw do
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
+  get 'auth/google', as: 'auth_google'
+
+  match '/auth/google/callback', :to => 'sessions#create', :via => [:get, :post]
+
+  match '/auth/failure', :to => 'sessions#failure', :via => [:get, :post]
+
+  get '/login', :to => 'sessions#login'
+
+  get '/logout', :to => 'sessions#logout'
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
-  resources :players
+  resources :players, only: [:index, :new, :create, :show, :edit, :update]
 
-  resources :teams
+  resources :teams, only: [:index, :new, :create, :show, :edit, :update]
 
-  resources :matches
+  resources :matches, only: [:index, :new, :create, :show]
 
-  resources :ranking
+  resources :ranking, only: [:index]
 
   # Example resource route with options:
   #   resources :products do
