@@ -167,24 +167,4 @@ describe TeamsController do
       it { expect(response).to be_not_found }
     end
   end
-
-  describe '#destroy' do
-    let(:team) { build_stubbed(:team) }
-
-    context 'when team exists' do
-      before do
-        Team.stub(:find).and_return(team)
-        expect(team).to receive(:destroy)
-        delete :destroy, id: team.id
-      end
-
-      it { expect(response).to redirect_to teams_path }
-    end
-
-    context 'when team does not exist' do
-      before { delete :destroy, id: team.id }
-
-      it { expect(response).to be_not_found }
-    end
-  end
 end
