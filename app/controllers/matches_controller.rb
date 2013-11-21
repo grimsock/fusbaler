@@ -23,22 +23,6 @@ class MatchesController < ApplicationController
     @matches = Match.all
   end
 
-  def edit
-    @match = Match.find(params[:id])
-    @teams = Team.all
-  end
-
-  def update
-    @match = Match.find(params[:id])
-    @teams = Team.all
-
-    if @match.update(match_params)
-      redirect_to @match
-    else
-      render :edit
-    end
-  end
-
   private
 
   def match_params
