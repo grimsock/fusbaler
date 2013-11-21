@@ -5,4 +5,4 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-Ranking.create!(name: 'ranking', default: true)
+Ranking.create!(name: 'ranking', default: true) if Ranking.where(default: true).empty?
