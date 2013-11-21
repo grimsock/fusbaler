@@ -7,6 +7,7 @@
   <% @teams.each do |t| %>
     <p><%= t.name %></p>
   <% end %>
-<p><%= link_to 'Edit', edit_player_path(@player) %> |
-<%= link_to 'Back to players list', players_path %> |
-<%= link_to 'Add team', new_team_path %></p>
+<p><%= link_to 'Back', go_back %> |
+<%= link_to 'Home', root_path %> |
+<%= link_to 'Edit', edit_player_path(@player) %> |
+<%= link_to 'Players list', players_path %></p>
