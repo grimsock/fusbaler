@@ -1,0 +1,18 @@
+%h1 All matches
+%table
+  %tr
+    %th Match
+    %th Score
+
+  - @matches.each do |m|
+    %tr
+      %td #{m.team_home.name} + #{m.team_away.name}
+      %td #{m.score.score_home} : #{m.score.score_away}
+      %td= link_to 'Show', match_path(m)
+
+%p
+  = link_to 'Back', go_back
+  |
+  = link_to 'Home', root_path
+  |
+  = link_to 'New match', new_match_path

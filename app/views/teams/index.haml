@@ -1,0 +1,16 @@
+%h1 All teams
+%table
+  %tr
+    %th Name
+  - @teams.each do |t|
+    %tr
+      %td= t.name
+      %td= link_to 'Show', team_path(t)
+      %td= link_to 'Edit', edit_team_path(t)
+      %td= link_to 'Destroy', team_path(t), method: :delete, data: { confirm: 'Are you sure?' }
+%p
+  = link_to 'Back', go_back
+  |
+  = link_to 'Home', root_path
+  |
+  = link_to 'New team', new_team_path

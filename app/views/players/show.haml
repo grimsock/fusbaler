@@ -1,0 +1,15 @@
+%h1 Show player
+%p
+  %strong Name:
+  = @player.name
+%h2 Player's teams
+- @teams.each do |t|
+  %p= t.name
+%p
+  = link_to 'Back', go_back
+  |
+  = link_to 'Home', root_path
+  |
+  = link_to 'Edit', edit_player_path(@player)
+  |
+  = link_to 'Players list', players_path

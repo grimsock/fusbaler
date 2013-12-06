@@ -1,0 +1,9 @@
+%h1 Play The Game!
+- flash.each do |name, msg|
+  = content_tag :div, msg, class: name
+%p= link_to_if(current_user.nil?, 'Sign in with Google', auth_google_path)
+%p= link_to_if(!current_user.nil?, 'Logout', logout_path)
+%p= link_to 'Teams Ranking', ranking_index_path
+%p= link_to 'Play Single Game', new_match_path
+%p= link_to 'Add New Team', new_team_path
+%p= link_to 'Add New Player', new_player_path

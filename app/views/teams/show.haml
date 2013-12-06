@@ -1,0 +1,26 @@
+%h1 Show team
+%p
+  %strong Name:
+  = @team.name
+%h2 Players
+%p
+  - @players.each do |p|
+    %p= p.name
+%h2 Matches
+%p
+  - @team.matches.each do |m|
+    %p
+      = m.team_home.name
+      vs
+      = m.team_away.name
+      |
+      = m.score.score_home
+      \:
+      = m.score.score_away
+
+%p
+  = link_to 'Home', root_path
+  |
+  = link_to 'Edit', edit_team_path(@team)
+  |
+  = link_to 'Teams list', teams_path

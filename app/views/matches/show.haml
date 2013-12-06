@@ -1,0 +1,13 @@
+%h1 Show match
+%p
+  %strong Team:
+  #{@match.team_home.name} vs #{@match.team_away.name}
+
+%p
+  %strong Score:
+  #{@match.score.score_home} : #{@match.score.score_away}
+
+%p
+  = link_to 'Home', root_path
+  |
+  = link_to 'Matches list', matches_path

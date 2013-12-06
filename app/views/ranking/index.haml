@@ -1,0 +1,12 @@
+%h1 Ranking
+%table
+  %tr
+    %th>Team
+    %th>Wins
+
+  - @ranking_positions.each do |r|
+    %tr
+      %td= r.team.name
+      %td= r.rank
+
+%p= link_to 'Back', go_back

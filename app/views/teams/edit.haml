@@ -1,0 +1,23 @@
+%h1 Edit team
+= form_for @team do |f|
+  - if @team.errors.any?
+    %ul
+      - @team.errors.full_messages.each do |m|
+        %li= m
+  %p
+    = f.label :name
+    %br
+    = f.text_field :name
+  %p
+    = f.collection_select(:player_ids, @players, :id, :name, {}, { multiple: true })
+    %br
+  %p
+    = link_to 'Add player', new_player_path
+  %p
+    = f.submit
+%p
+  = link_to 'Back', go_back
+  |
+  = link_to 'Home', root_path
+  |
+  = link_to 'Teams list', teams_path

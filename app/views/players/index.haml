@@ -1,0 +1,15 @@
+%h1 All players
+%table
+  %tr
+    %th Name
+  - @players.each do |p|
+    %tr
+      %td= p.name
+      %td= link_to 'Show', player_path(p)
+      %td= link_to 'Edit', edit_player_path(p)
+%p
+  = link_to 'Home', root_path
+  |
+  = link_to 'Back', go_back
+  |
+  = link_to 'New player', new_player_path
