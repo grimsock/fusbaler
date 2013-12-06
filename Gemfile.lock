@@ -48,6 +48,13 @@ GEM
     execjs (2.0.2)
     factory_girl (4.2.0)
       activesupport (>= 3.0.0)
+    haml (4.0.3)
+      tilt
+    haml-rails (0.4)
+      actionpack (>= 3.1, < 4.1)
+      activesupport (>= 3.1, < 4.1)
+      haml (>= 3.1, < 4.1)
+      railties (>= 3.1, < 4.1)
     hashie (2.0.5)
     highline (1.6.20)
     hike (1.2.3)
@@ -152,6 +159,8 @@ DEPENDENCIES
   capistrano-rails (= 1.0.0)
   coffee-rails (~> 4.0.0)
   factory_girl (= 4.2.0)
+  haml
+  haml-rails
   jquery-rails (= 3.0.4)
   mysql2 (= 0.3.13)
   omniauth (= 1.1.4)
