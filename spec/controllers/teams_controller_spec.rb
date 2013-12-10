@@ -1,6 +1,8 @@
 require 'spec_helper'
 
 describe TeamsController do
+  before { controller.stub(:authorize_user).and_return(true) }
+
   describe '#new' do
     let(:players) { build_list(:player, 2) }
     before do

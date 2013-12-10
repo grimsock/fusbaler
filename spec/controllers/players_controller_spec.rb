@@ -1,6 +1,8 @@
 require 'spec_helper'
 
 describe PlayersController do
+  before { controller.stub(:authorize_user).and_return(true) }
+
   describe '#new' do
     before { get :new }
 

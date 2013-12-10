@@ -1,6 +1,8 @@
 require 'spec_helper'
 
 describe MatchesController do
+  before { controller.stub(:authorize_user).and_return(true) }
+
   describe '#new' do
     let(:teams) { build_list(:team, 2) }
     before do

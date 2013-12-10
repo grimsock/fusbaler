@@ -2,8 +2,13 @@ require 'spec_helper'
 
 describe HomeController do
   describe '#index' do
-    before { get :index }
+    before do
+      controller.stub(:authorize_user).and_return(true)
+      get :index
+    end
 
-    it { expect(response).to be_success }
+    it 'sss' do
+      expect(response).to be_success
+    end
   end
 end
