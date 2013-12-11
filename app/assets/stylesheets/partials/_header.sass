@@ -1,2 +1,9 @@
 header
   +clearfix
+  background: $header-bg-color
+  border-bottom: 5px solid darken($header-bg-color, 5%)
+
+  a
+    &, &:hover, &:active
+      color: $bg-color
+      text-decoration: none

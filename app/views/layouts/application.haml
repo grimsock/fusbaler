@@ -9,6 +9,7 @@
   %body
     .wrapper
       = render "layouts/header"
-      = yield
+      .container
+        = yield
       .push-footer
     = render "layouts/footer"
