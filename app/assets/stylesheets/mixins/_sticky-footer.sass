@@ -1,0 +1,22 @@
+// Stick the footer to the bottom of the page.
+// Based on Ryan Fait's method.
+
+=sticky-footer($height: 50px)
+  html, body
+    height: 100%
+
+  .wrapper
+    height:        100%
+    height:        auto !important
+    margin-bottom: -$height
+    min-height:    100%
+
+    .push-footer
+      clear:  both
+      height: $height
+
+  footer
+    +clearfix
+    clear:    both
+    height:   $height
+    position: relative
