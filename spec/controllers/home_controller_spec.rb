@@ -7,8 +7,6 @@ describe HomeController do
       get :index
     end
 
-    it 'sss' do
-      expect(response).to be_success
-    end
+    it { expect(response).to be_success }
   end
 end

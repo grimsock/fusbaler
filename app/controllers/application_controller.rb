@@ -5,6 +5,8 @@ class ApplicationController < ActionController::Base
 
   rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 
+  helper_method :current_user
+
   def authorize_user
     redirect_to login_path unless session[:user_id].present?
   end
@@ -18,6 +20,4 @@ class ApplicationController < ActionController::Base
   def current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id].present?
   end
-
-  helper_method :current_user
 end
