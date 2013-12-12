@@ -1,9 +1,32 @@
 header
   +clearfix
-  background: $header-bg-color
+  background:    $header-bg-color
   border-bottom: 5px solid darken($header-bg-color, 5%)
+  padding:       .5em 0 .4em
+  text-shadow:   0 1px 1px darken($header-bg-color, 10%)
+
+  h1
+    display:        inline-block
+    margin:         0
+    font-weight:    500
+    line-height:    1.2em
+    padding:        .5em 0
 
   a
     &, &:hover, &:active
-      color: $bg-color
+      color:           $bg-color
       text-decoration: none
+
+  ul
+    +bare-list
+    margin-left: 1em
+    font-size:   1.25em
+    font-weight: $light
+    position:    relative
+    bottom:      .1em
+
+    li
+      letter-spacing: .05em
+
+      a
+        padding:  .5em
