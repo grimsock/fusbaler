@@ -10,9 +10,7 @@ describe ApplicationController do
   describe '#authorize_user' do
     context 'when user set in session' do
       before do
-        session.stub(:[]).with("flash")
-        session.stub(:[]).with(:_turbolinks_redirect_to)
-        session.stub(:[]).with(:user_id).and_return 1
+        stub_session
         get :index
       end
 

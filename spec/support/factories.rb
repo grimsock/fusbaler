@@ -31,4 +31,9 @@ FactoryGirl.define do
   factory :team do
     sequence(:name) { |n| "team#{n}" }
   end
+
+  factory :user do
+    sequence(:email) { |n| "user#{n}@example.com" }
+    sequence(:name) { |n| "user#{n}" }
+  end
 end
